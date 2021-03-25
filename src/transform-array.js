@@ -40,7 +40,7 @@ module.exports = function transform( arr ) {
           skipNext = true;
         break;
       case '--discard-prev':
-        if(index >= 0 && index< (arr.length - 1) && isNotCommand(arr[index-1]) ){
+        if(index >= 0 && index <= (arr.length - 1) && isNotCommand(arr[index-1]) && prevIsNotSkipped(arr,index)){
           resArr = discardPrev (arr, resArr, index);
         }
         skipNext = false;
@@ -50,7 +50,7 @@ module.exports = function transform( arr ) {
           resArr = doubleNext (arr, resArr, index);
         break;
       case '--double-prev':
-        if(index >= 0 && index< (arr.length - 1) && isNotCommand(arr[index-1]) && prevIsNotSkipped(arr,index)){
+        if(index >= 0 && index <= (arr.length - 1) && isNotCommand(arr[index-1]) && prevIsNotSkipped(arr,index)){
           resArr = doublePrev (arr, resArr, index);
         }
         skipNext = false;
@@ -66,12 +66,6 @@ module.exports = function transform( arr ) {
 
     }
   })
-  //console.log('RESULT = ' + resArr)
-  if(resArr[0] == 1 || resArr[0]== '' ){
-    console.log(arr)
-    console.log('RESULT = ' +resArr)
-  }
-  if(resArr == '')
-    return []
+
   return resArr;
 };
