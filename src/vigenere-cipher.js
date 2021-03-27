@@ -37,7 +37,7 @@ class thisingMachine {
   encrypt(plainText, key) {
 
     if(!plainText || !key || plainText === undefined || key === undefined){
-      throw new Error('no entry data')
+      throw new Error( 'no entry data' )
     }
     plainText = plainText.toLowerCase();
     key = key.match(/[a-z]/gi).join("").toLowerCase();
