@@ -41,6 +41,7 @@ class thisingMachine {
     }
     plainText = plainText.toLowerCase();
     key = key.match(/[a-z]/gi).join("").toLowerCase();
+
     let text = "";
     let specialCharacterCount = 0;
 
